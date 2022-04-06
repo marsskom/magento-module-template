@@ -1,0 +1,1 @@
+# %{{M2_VENDOR}}% - %{{M2_VENDOR_MODULE}}%

@@ -1,0 +1,33 @@
+{
+    "name": "%{{GIT_REPONAME}}%",
+    "description": "%{{COMPOSER_DESCRIPTION}}%",
+    "type": "magento2-module",
+    "license": [
+        "%{{LICENSE_CODE}}%"
+    ],
+    "authors": [
+        {
+            "name": "%{{AUTHOR_NAME}}%",
+            "email": "%{{AUTHOR_EMAIL}}%",
+            "homepage": "%{{AUTHOR_HOMEPAGE}}%",
+            "role": "%{{AUTHOR_ROLE}}%"
+        }
+    ],
+    "config": {
+        "sort-packages": true
+    },
+    "version": "1.0.0",
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "require": {
+        "php": "%{{PHP_VERSION}}%"
+    },
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "%{{COMPOSER_AUTOLOAD_NAMESPACE}}%": ""
+        }
+    }
+}
