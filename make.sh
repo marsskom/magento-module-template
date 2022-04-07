@@ -31,14 +31,14 @@ function debug_info() {
 [ -e "$SCRIPT_FILENAME" ] && rm "$SCRIPT_FILENAME"
 
 # Creates script file.
-find ./src -type f -name "*.sh" -printf "%d %p\n" | sort -t _ -n | while read file; do
-    readarray -d " " -t file_data <<<"$file"
-    file_name="${file_data[1]//[$'\t\r\n']/}"
-
-    debug_info "START" "$file_name"
-    cat "$file_name" >>"$SCRIPT_FILENAME"
-    debug_info "END" "$file_name"
+find ./src -type f -name "*.sh" -printf "%p\n" | sort -t _ -n | cut -d ' ' -f1- | while read file; do
+    debug_info "START" "$file"
+    cat "$file" >>"$SCRIPT_FILENAME"
+    debug_info "END" "$file"
 done
 
+# Copies vendor scripts.
+cp -R ./vendor/* ./bin/
+
 # Sets executable.
-chmod +x "$SCRIPT_FILENAME"
+chmod +x ./bin/*.sh
