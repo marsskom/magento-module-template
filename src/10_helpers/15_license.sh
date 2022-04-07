@@ -1,5 +1,5 @@
 function licence_cache_get_file_name() {
-    echo "$SCRIPT_PATH/cache/$1.json"
+    echo "$SCRIPT_PATH/cache/licenses/$1.json"
 }
 
 function licence_cache_write() {
@@ -11,7 +11,7 @@ function licence_cache_read() {
 }
 
 function license_load() {
-    if [[ ! -e "$(licence_cache_get_file_name "$1")" ]]; then
+    if [ ! -e "$(licence_cache_get_file_name "$1")" ]; then
         licence_cache_write "$1" "$(curl -s "https://api.github.com/licenses/$1")"
     fi
 
