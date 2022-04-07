@@ -12,31 +12,6 @@ DEBUG=${DEBUG:-0}
 SRC_DIR=${SRC_DIR:-"./src"}
 SCRIPT_FILENAME=${SCRIPT_FILENAME:-"./bin/script.sh"}
 
-# Function reads files in directory recursively.
-find_files() {
-    if [[ ! -x "$1" ]]; then
-        echo "$1 isn't a directory" >&2
-        return 1
-    fi
-
-    local dirs=("$1")
-
-    while [[ "${#dirs[@]}" -gt 0 ]]; do
-        local dir="${dirs[0]}"
-        dirs=("${dirs[@]:1}") # pop the element from above
-
-        # whitespace in filenames iterated will be a problem. Look to the IFS
-        # variable to handle those more gracefully.
-        for p in "${dir}"/*; do
-            if [[ -d "$p" ]]; then
-                dirs+=("$p")
-            elif [[ -f "$p" ]]; then
-                echo "$p"
-            fi
-        done
-    done
-}
-
 # Adds debug info.
 debug_info() {
     if [ "$DEBUG" = 0 ]; then
@@ -58,10 +33,10 @@ debug_info() {
 # Creates script file.
 printf "#!/usr/bin/env bash\n" >"$SCRIPT_FILENAME"
 
-for f in $(find_files "$SRC_DIR"); do
-    debug_info "START" $f
-    cat "$f" >>"$SCRIPT_FILENAME"
-    debug_info "END" $f
+find ./src -type f -name "*.sh" | sort -t '\0' -n | while read file; do
+    debug_info "START" $file
+    cat "$file" >>"$SCRIPT_FILENAME"
+    debug_info "END" $file
 done
 
 # Sets executable.
