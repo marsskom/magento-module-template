@@ -1,5 +1,5 @@
 {
-    "name": "%{{GIT_REPONAME}}%",
+    "name": "%{{GIT_REPO_NAME}}%",
     "description": "%{{COMPOSER_DESCRIPTION}}%",
     "type": "magento2-module",
     "license": [
