@@ -13,7 +13,7 @@ SRC_DIR=${SRC_DIR:-"./src"}
 SCRIPT_FILENAME=${SCRIPT_FILENAME:-"./bin/script.sh"}
 
 # Adds debug info.
-debug_info() {
+function debug_info() {
     if [ "$DEBUG" = 0 ]; then
         return 1
     fi
@@ -31,12 +31,13 @@ debug_info() {
 [ -e "$SCRIPT_FILENAME" ] && rm "$SCRIPT_FILENAME"
 
 # Creates script file.
-printf "#!/usr/bin/env bash\n" >"$SCRIPT_FILENAME"
+find ./src -type f -name "*.sh" -printf "%d %p\n" | sort -t _ -n | while read file; do
+    readarray -d " " -t file_data <<<"$file"
+    file_name="${file_data[1]//[$'\t\r\n']/}"
 
-find ./src -type f -name "*.sh" | sort -t '\0' -n | while read file; do
-    debug_info "START" $file
-    cat "$file" >>"$SCRIPT_FILENAME"
-    debug_info "END" $file
+    debug_info "START" "$file_name"
+    cat "$file_name" >>"$SCRIPT_FILENAME"
+    debug_info "END" "$file_name"
 done
 
 # Sets executable.
