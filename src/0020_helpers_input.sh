@@ -3,6 +3,7 @@ function input_data_get_value() {
         readarray -d "$INPUT_DATA_SEPARATOR" -t strarr <<<"$i"
         if [ "$1" = "${strarr[0]}" ]; then
             echo "${strarr[1]}"
+            return 1
         fi
     done
 }
