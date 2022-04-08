@@ -1,0 +1,21 @@
+[author]
+name = ""
+email = ""
+homepage = ""
+role = ""
+
+[php]
+version = ""
+
+[magento]
+vendor_name = ""
+module_name = ""
+
+[composer]
+autoload = ""
+repo_name = ""
+repo_description = ""
+
+[other]
+license = "osl-3.0"
+code_owner = ""
