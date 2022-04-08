@@ -57,7 +57,7 @@ Of course, you can change all parameters, but pay attention on the directories i
 
 ## Script Usage
 
-After the bundle build, you can use it in simple way (for instance, from current project folder):
+After the bundle was built, you can use it in simple way (for instance, from current project folder):
 
 ```bash
 ./bin/script.sh -d /path/to/magento1/app/code

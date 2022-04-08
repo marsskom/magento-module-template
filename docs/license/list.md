@@ -1,8 +1,8 @@
 # Licenses list
 
-[Here](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository#searching-github-by-license-type) the link to GitHub documentation.
+[Here the link to GitHub documentation](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository#searching-github-by-license-type).
 
-Quick available licenses list:
+Available licenses list:
 
 | License                                         | License keyword      |
 |-------------------------------------------------|----------------------|

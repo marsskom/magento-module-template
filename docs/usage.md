@@ -15,9 +15,9 @@
 
 ## Dependencies
 
-The bundle script depends on [jq](https://stedolan.github.io/jq/) that is located in `vendor` folder.
+The bundle script depends on [`jq`](https://stedolan.github.io/jq/) that is located in `vendor` folder.
 
-jq uses for parsing an answers from [GitHub API](#licenses).
+`jq` uses for parsing an answers from [GitHub API](#licenses).
 
 All script moves from `vendor` to `bin` directory with bundle script that uses them.
 
@@ -28,27 +28,27 @@ All script moves from `vendor` to `bin` directory with bundle script that uses t
 
 -d /path/to/destination/dir - path to destination directory where a module will be put, is required parameter, for instanse `/path/to/projects/magento2/src/spp/code/`
 
--f /pth/to/file/project.ini - path to settings file with default values, default script doesn't use file
+-f /path/to/file/project.ini - path to settings file with default values, default is empty - script doesn't use file
 
--n [0;1] disable;enable non-interactive mode, default is `0` - mean the scripts runs in interactive mode
+-n [0;1] - disable;enable non-interactive mode, default is `0` - mean the scripts runs in interactive mode
 ```
 
 ## Variables list
 
-| Variable Name          | Code                                     | Default Value                                  | Usage Examples                                                                                                                              |
-|------------------------|------------------------------------------|------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|
-| User Name              | `%{{AUTHOR_NAME}}%`                      | `git config --get user.name`                   | In `composer.json` authors.name                                                                                                             |
-| User Email             | `%{{AUTHOR_EMAIL}}%`                     | `git config --get user.email`                  | In `composer.json` authors.email                                                                                                            |
-| User Homepage          | `%{{AUTHOR_HOMEPAGE}}%`                  | ---                                            | In `composer.json` authors.homepage                                                                                                         |
-| User Role              | `%{{AUTHOR_ROLE}}%`                      | ---                                            | In `composer.json` authors.role                                                                                                             |
-| PHP Version            | `%{{PHP_VERSION}}%`                      | `php -r "echo PHP_VERSION;"`                   | In `composer.json` require                                                                                                                  |
-| Magento 2 Vendor Name  | `%{{M2_VENDOR}}%`                        | ---                                            | Is the directory name in `app/code` for Magento 2, in `composer.json` as default value for reponame prefix, in `README.md`, in `module.xml` |
-| Magento 2 Module Name  | `%{{M2_VENDOR_MODULE}}%`                 | ---                                            | Is the directory name in `app/code/Vendor` for Magento 2, in `module.xml` and same as vendor name                                           |
-| Autoload               | `%{{COMPOSER_AUTOLOAD_NAMESPACE}}%`      | `%{{M2_VENDOR}}%\\%{{M2_VENDOR_MODULE}}%")\\`  | In `composer.json` for autoload.psr-4                                                                                                       |
-| Repository Name        | `%{{GIT_REPO_NAME}}%`                    | `%{{M2_VENDOR}}%/%{{M2_VENDOR_MODULE}}%`       | `composer.json` - name                                                                                                                      |
-| Repository Description | `%{{COMPOSER_DESCRIPTION}}%`             | ---                                            | `composer.json` - description                                                                                                               |
-| License Data           | `%{{LICENSE_SET}}%` `%{{LICENSE_CODE}}%` | License code is `osl-3.0` by default           | In `composer.json` and license text will passe into `LICENSE.txt` file                                                                      |
-| Code Owner             | `%{{CODE_OWNER}}%`                       | ---                                            | In `CODEOWNERS` file for GitHub                                                                                                             | 
+| Variable Name          | Code                                     | Default Value                                 | Usage Examples                                                                                                                                     |
+|------------------------|------------------------------------------|-----------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------|
+| User Name              | `%{{AUTHOR_NAME}}%`                      | `git config --get user.name`                  | In `composer.json` authors.name                                                                                                                    |
+| User Email             | `%{{AUTHOR_EMAIL}}%`                     | `git config --get user.email`                 | In `composer.json` authors.email                                                                                                                   |
+| User Homepage          | `%{{AUTHOR_HOMEPAGE}}%`                  | -                                             | In `composer.json` authors.homepage                                                                                                                |
+| User Role              | `%{{AUTHOR_ROLE}}%`                      | -                                             | In `composer.json` authors.role                                                                                                                    |
+| PHP Version            | `%{{PHP_VERSION}}%`                      | `php -r "echo PHP_VERSION;"`                  | In `composer.json` require                                                                                                                         |
+| Magento 2 Vendor Name  | `%{{M2_VENDOR}}%`                        | -                                             | Is the directory name in `app/code` for Magento 2, in `composer.json` as default value for repository name prefix, in `README.md`, in `module.xml` |
+| Magento 2 Module Name  | `%{{M2_VENDOR_MODULE}}%`                 | -                                             | Is the directory name in `app/code/Vendor` for Magento 2, in `module.xml` and same as vendor name                                                  |
+| Autoload               | `%{{COMPOSER_AUTOLOAD_NAMESPACE}}%`      | `%{{M2_VENDOR}}%\\%{{M2_VENDOR_MODULE}}%")\\` | In `composer.json` for autoload.psr-4                                                                                                              |
+| Repository Name        | `%{{GIT_REPO_NAME}}%`                    | `%{{M2_VENDOR}}%/%{{M2_VENDOR_MODULE}}%`      | `composer.json` - name                                                                                                                             |
+| Repository Description | `%{{COMPOSER_DESCRIPTION}}%`             | -                                             | `composer.json` - description                                                                                                                      |
+| License Data           | `%{{LICENSE_SET}}%` `%{{LICENSE_CODE}}%` | License code is `osl-3.0` by default          | In `composer.json` and license text will pass into `LICENSE.txt` file                                                                              |
+| Code Owner             | `%{{CODE_OWNER}}%`                       | -                                             | In `CODEOWNERS` file for GitHub                                                                                                                    | 
 
 ## Default values
 
@@ -82,7 +82,7 @@ license = "osl-3.0"
 code_owner = ""
 ```
 
-If you need this file, therefor copy `project.ini.example` to `project.ini` (or set name that you prefer).
+If you need this file, therefore copy `project.ini.example` to `project.ini` (or set name that you prefer).
 
 Now you can fill any values and use this file [as parameter in script](#set-up-settings-file).
 
@@ -170,7 +170,7 @@ Choose license [mit]:
 Code Owner [@marsskom]:
 ```
 
-Definitely you can override any value:
+Definitely, you can override any value:
 
 ```bash
 Hi! Please, fill a module data [Enter to continue]
@@ -224,7 +224,7 @@ Run script:
 ./bin/script.sh -d /path/to/magento1/app/code -f project.ini -n 1
 ```
 
-So the script will don't ask any values, just will be run and show the result:
+So the script doesn't ask any values, just will show the result:
 
 ```bash
 Name: Andrii Prakapas
@@ -243,7 +243,7 @@ Code Owner: @marsskom
 
 ### Change source directory
 
-Of course, you can change the source directory and the script will copy your directory and will try to replace all [variables](#variables-list) by their values.
+Of course, you can change the source directory and the script will copy your directory and will try to replace all [variables](#variables-list) by their values in each file.
 
 OK. Have fun!
 
