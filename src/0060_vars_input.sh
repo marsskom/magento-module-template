@@ -1,1 +1,3 @@
-read -rp "Hi! Please, specify the data about module (Enter to continue)"
+if [ "$INTERACTIVE" = 1 ]; then
+    read -rp "Hi! Please, fill a module data [Enter to continue]"
+fi
