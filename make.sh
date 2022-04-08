@@ -31,6 +31,7 @@ function debug_info() {
 [ -e "$SCRIPT_FILENAME" ] && rm "$SCRIPT_FILENAME"
 
 # Creates script file.
+echo "#!/usr/bin/env bash" >>"$SCRIPT_FILENAME"
 find ./src -type f -name "*.sh" -printf "%p\n" | sort -t _ -n | cut -d ' ' -f1- | while read file; do
     debug_info "START" "$file"
     cat "$file" >>"$SCRIPT_FILENAME"
