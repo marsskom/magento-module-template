@@ -19,9 +19,9 @@ function license_load() {
 }
 
 function license_get_code() {
-    "$SCRIPT_PATH/jq.sh" '.spdx_id' "$1"
+    "$SCRIPT_PATH/jq.sh" -r '.spdx_id' "$1"
 }
 
 function license_get_text() {
-    "$SCRIPT_PATH/jq.sh" '.body' "$1"
+    "$SCRIPT_PATH/jq.sh" -r '.body' "$1"
 }
